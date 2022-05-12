@@ -1183,6 +1183,7 @@ name = "rust_authz_server"
 version = "0.1.0"
 dependencies = [
  "actix-web",
+ "serde",
 ]
 
 [[package]]
