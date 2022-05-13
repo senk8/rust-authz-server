@@ -1,0 +1,4 @@
+enum ResposeType {
+    Code,
+    Token
+}

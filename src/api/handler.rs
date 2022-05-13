@@ -33,10 +33,14 @@ pub async fn approve(query: Query<AuthzRequest>) -> impl Responder {
 
         HttpResponse::Found().body("Hey there!")
     } else {
-        if query.response_type == "code" {
-            let code = "12";
-            HttpResponse::Found().body("Hey there!")
-        } 
+        match query.response_type {
+            "code" => {
+                let code = "12";
+                HttpResponse::Found().body("Hey there!")
+            },
+            "token" => (),
+        }
+       } 
     }
 }
 
