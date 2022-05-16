@@ -43,3 +43,23 @@ pub fn authorize(authz_request: AuthzRequest) -> impl Responder {
             .body(response_body)
     }
 }
+
+pub fn approve(approve_request: ApproveRequest) -> impl Responder {
+    let client = get_client(&approve_request.client_id);
+    if let Some(c) = client {
+
+        if c.redirect_uris.contains(&approve_request.redirect_uri) {
+            return HttpResponse::BadRequest().body("Hey there!");
+        }
+
+        HttpResponse::Found().body("Hey there!")
+    } else {
+        match query.response_type {
+            "code" => {
+                let code = "12";
+                HttpResponse::Found().body("Hey there!")
+            },
+            "token" => (),
+        }
+    }
+}
